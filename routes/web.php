@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\mainController;
-use App\Http\Middleware\localMiddleware;
 use App\Http\Middleware\mainMiddleware;
 use Illuminate\Support\Facades\Route;
 
