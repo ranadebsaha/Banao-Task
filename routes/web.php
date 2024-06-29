@@ -11,3 +11,4 @@ Route::get('/login',[mainController::class,'view_login']);
 Route::post('/login',[mainController::class,'login']);
 Route::get('/dashboard',[mainController::class,'view_dashboard'])->middleware(mainMiddleware::class);
 Route::get('/logout',[mainController::class,'logout']);
+Route::get('/todo',[mainController::class,'todo_view']);

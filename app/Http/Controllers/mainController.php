@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Hash;
@@ -46,6 +47,7 @@ class mainController extends Controller
             if (Hash::check($request->password, $user->password)) {
                 $request->session()->put('email', $user->email);
                 $request->session()->put('name', $user->name);
+                $request->session()->put('user_id', $user->id);
                 return redirect('dashboard')->with('success', "Welcome User");
             } else {
                 return redirect('login')->with('error', "Enter Valid Password");
@@ -56,7 +58,9 @@ class mainController extends Controller
     }
 
     public function view_dashboard(){
-        return view('dashboard');
+        $task = Task::where('id', '=', Session::get('user_id'))->get();
+        $data=compact('task');
+        return view('dashboard')->with($data);
        }
 
        public function logout(){
