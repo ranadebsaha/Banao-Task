@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\taskResource;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Session;
 
 class TaskController extends Controller
 {
@@ -16,6 +16,7 @@ class TaskController extends Controller
             'task' => "required|max:255",
         ]);
         if($validator->fails()){
+
             return response()->json([
                 'message' => 'All fields are required',
                 'error' => $validator->messages()

@@ -58,7 +58,7 @@ class mainController extends Controller
     }
 
     public function view_dashboard(){
-        $task = Task::where('id', '=', Session::get('user_id'))->get();
+        $task = Task::where('user_id', '=', Session::get('user_id'))->get();
         $data=compact('task');
         return view('dashboard')->with($data);
        }
